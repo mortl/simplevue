@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Vue</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <div id="app" style="display:none;">
+
+      <p>VueJS is pretty Cool! {{ name}} ({{ age}})</p>
+      <hr>
+      <p> Age * 3 = {{ age * 3}}</p>
+      <hr>
+      <p> Randome number between 0 and 1  - {{random()}}</p>
+
+
+      <hr>
+      <div>
+        <img :src="imgURL"  >
+      </div>
+
+      <input type="text" v-bind:value="name">
+  </div>
+
+  <div id="counter">
+    <h2> Increase the number of likes</h2>
+    <button @click="increase(2)">Click</button>
+    <p>{{ count }}</p>
+
+    <p @mousemove="updateCoords"> 
+      Coordinates: {{ x }} / {{ y }}
+      - <span @mousemove.stop=""> Dead spot</span>
+
+    </p>
+  </div>
+ 
+
+ <script>
+    var settings = {
+         el: "#app",
+         data:  {
+           title: 'Learning VueJS 2!',
+           link:'https://google.ca',
+           linkTitle:'Google',
+           actualLink:'<a href="http://google.ca">Google</a>',
+
+         
+         },
+         methods:{
+           sayHello:function(){
+             return this.title;
+           }
+         }
+    };
+
+    var exercise1 = {
+
+      el:"#app",
+      data:{
+        name:'Martin',
+        age: 26,
+        randomNumber: Math.random(),
+        imgURL: "http://media.comicbook.com/2016/02/spawn-featured-photo-gallery-169822.jpg",
+      },
+
+      methods:{
+        random:function(){
+          return Math.floor(Math.random() * 100);
+        }
+      }
+    }
+
+
+    var counter = {
+      el: "#counter",
+      data: {
+        count:0,
+        x:0,
+        y:0
+      },
+      methods: {
+        increase:function(step){
+          this.count += step;
+        },
+        updateCoords:function(evt){
+            this.x = evt.clientX;
+            this.y = evt.clientY;
+        }
+      }
+    };
+    var vm = new Vue(counter);
+ </script>
+</body>
+
+</html>

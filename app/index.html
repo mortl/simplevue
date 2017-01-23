@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS</title>
+
+	<style type="text/css" media="screen">
+		* {
+			box-sizing: border-box;
+		}
+
+
+		.text-section {
+			width: 100%;
+			height: 100%;
+			background: #565656;		
+			color: #fff;
+			text-align: center;
+
+			position: absolute;
+			left: 0;
+		 	top: 50%;
+		 	transform: translateY(-50%);
+
+		 	padding-top: 89px;
+		}
+
+		.wrapper {
+			padding-right: 18px;
+			padding-left: 18px;
+			overflow: hidden;
+			max-width: 1236px;
+			margin-left: auto;
+			margin-right: auto;
+			height: 300px;
+			position: relative;
+		}
+
+		.wrapper--b-margin {
+			margin-bottom: 2rem;
+		}
+
+		.page-section {
+			padding: 1.2rem 0;
+		}
+	</style>
+</head>
+<body>
+	
+		<div class="page-section">		
+			<div class="wrapper wrapper--b-margin">
+				<div id="app1" class="text-section">
+					<h1> {{ title }}</h1>
+					<button @click="show"> Show Paragraph</button>
+					<p v-if="showParagraph"> This is not always visible</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div id="app2" class="text-section">
+					<h1> {{ title }}</h1>
+				    <button @click="onChange">Change the title</button>
+				</div>
+			</div>
+		</div>
+
+
+	<script src="js/vue.js"></script>
+	<script src="js/h.js"></script>
+</body>
+</html>
